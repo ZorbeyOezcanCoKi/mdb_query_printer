@@ -1,0 +1,731 @@
+<<< ====================================================================== >>>
+<<< Komplette Query: dbb + 6 Wettbewerber × Themen-Filter Beamtenrenten     >>>
+<<< Stand: 2026-06-01                                                       >>>
+<<<                                                                         >>>
+<<< Struktur:                                                              >>>
+<<<   ( Org1 OR Org2 OR ... OR Org7 OR Politik )                            >>>
+<<<   AND                                                                   >>>
+<<<   ( BLOCK A direkt-exakt OR (Beamt* NEAR/10 BLOCK-B-Begriffe) )         >>>
+<<<   AND language:de                                                       >>>
+<<< ====================================================================== >>>
+(
+  <<< ================================================================== >>>
+  <<< 1) dbb - Deutscher Beamtenbund                                     >>>
+  <<< ================================================================== >>>
+  (
+    (
+      <<< 1.1) Voller Name und Flexionsformen >>>
+      "Deutscher Beamtenbund" OR
+      "Deutsche Beamtenbund" OR
+      "Deutschen Beamtenbund" OR
+      "Deutschen Beamtenbundes" OR
+      "des Deutschen Beamtenbunds" OR
+      "Beamtenbund und Tarifunion" OR
+      "Beamtenbundes und Tarifunion" OR
+      "dbb beamtenbund und tarifunion" OR
+      "dbb Beamtenbund" OR
+      Beamtenbund OR Beamtenbundes OR Beamtenbunds OR
+
+      <<< 1.2) Untergliederungen / Marken >>>
+      "dbb jugend" OR "dbb bundesfrauenvertretung" OR "dbb frauen" OR
+      "dbb akademie" OR "dbb forum" OR "dbb vorsorgewerk" OR
+      "dbb tarifunion" OR Tarifunion OR
+
+      <<< 1.3) Landesbünde >>>
+      "Bayerischer Beamtenbund" OR "BBB Bayern" OR
+      "Niedersächsischer Beamtenbund" OR "Hessischer Beamtenbund" OR
+      "Beamtenbund Rheinland-Pfalz" OR "Beamtenbund Sachsen" OR
+      "Beamtenbund NRW" OR "Beamtenbund Baden-Württemberg" OR
+      "Beamtenbund Berlin" OR "tbb Berlin" OR
+      "Schleswig-Holsteinischer Beamtenbund" OR
+      "Saarländischer Beamtenbund" OR "Thüringer Beamtenbund" OR
+      "Beamtenbund Mecklenburg-Vorpommern" OR
+      "Beamtenbund Sachsen-Anhalt" OR "Beamtenbund Brandenburg" OR
+      "Beamtenbund Hamburg" OR "Bremischer Beamtenbund" OR
+
+      <<< 1.4) Abkürzung mit Kontext >>>
+      (
+        (dbb OR DBB) NEAR/10 (
+          Beamte OR Beamten OR Beamtin OR Beamtinnen OR
+          Beamtenrecht OR Beamtenschaft OR Beamtenbesoldung OR
+          Tarifunion OR Tarifverhandlung* OR Tarifrunde OR Tarifabschluss OR
+          Tarifgemeinschaft OR Tarifeinigung OR Tarifkonflikt OR
+          Gewerkschaft OR Gewerkschaftstag OR Spitzengewerkschaft OR
+          Dachgewerkschaft OR
+          "öffentlicher Dienst" OR "öffentlichen Dienst" OR
+          "öffentliche Verwaltung" OR
+          Besoldung OR Beihilfe OR Versorgung OR
+          Silberbach OR Geyer OR Russ OR Russwurm OR
+          Streik OR Warnstreik
+        )
+      ) OR
+
+      <<< 1.5) Social-Media-Handles >>>
+      at_mentions:(dbb_news OR dbbnews OR dbb_online OR dbbonline OR
+                   dbbjugend OR dbb_jugend OR dbbtarif OR
+                   dbbfrauen OR dbb_frauen) OR
+      author:(dbb_news OR dbbnews OR dbb_online OR dbbonline OR
+              dbbjugend OR dbb_jugend OR dbbtarif OR
+              dbbfrauen OR dbb_frauen OR
+              "dbb beamtenbund und tarifunion" OR
+              "dbb jugend" OR "dbb bundesfrauenvertretung") OR
+
+      <<< 1.6) Hashtags >>>
+      hashtags:(dbb OR dbbjugend OR dbbfrauen OR
+                dbbgewerkschaftstag OR dbbjahrestagung OR
+                dbbforum OR dbbakademie OR
+                "öd2025" OR "tvöd2025") OR
+
+      <<< 1.7) Domain / Outbound-Links >>>
+      site:dbb.de OR site:dbbj.de OR
+      links:dbb.de OR links:dbbj.de OR
+      site:dbbakademie.de OR site:dbb-vorsorgewerk.de OR
+      site:dbb-magazin.de OR site:dbb-jugend.de OR
+
+      <<< 1.8) Spitzenpersonal mit Kontext >>>
+      (
+        ("Ulrich Silberbach" OR "Volker Geyer" OR
+         "Andreas Hemsing" OR "Maik Wagner" OR
+         "Friedhelm Schäfer" OR "Milanie Kreutz" OR
+         "Synnöve Nüchter")
+        NEAR/15
+        (Beamtenbund OR dbb OR DBB OR Tarifunion OR
+         Beamte OR "öffentlicher Dienst" OR "öffentlichen Dienst" OR
+         Gewerkschaft)
+      )
+    )
+    AND NOT (
+      <<< dbb-spezifische False Positives: Deutscher Basketball Bund >>>
+      Basketball OR Basketballer OR Basketballerin OR
+      NBA OR EuroLeague OR EuroBasket OR
+      BBL OR "Basketball Bundesliga" OR "Easycredit BBL" OR
+      "Deutscher Basketball" OR Basketballbund OR
+      Korbjäger OR Dunking OR
+      "Henrik Rödl" OR "Gordon Herbert" OR "Alba Berlin" OR
+      "Bayern Basketball" OR "DBB Pokal" OR
+      "Datenbankbeschreibung" OR "Database Beans" OR
+      "Diabetes Beratungsbuch"
+    )
+  )
+  OR
+  <<< ================================================================== >>>
+  <<< 2) DGB - Deutscher Gewerkschaftsbund                               >>>
+  <<< ================================================================== >>>
+  (
+    (
+      <<< 2.1) Voller Name und Flexionsformen >>>
+      "Deutscher Gewerkschaftsbund" OR
+      "Deutsche Gewerkschaftsbund" OR
+      "Deutschen Gewerkschaftsbund" OR
+      "Deutschen Gewerkschaftsbundes" OR
+      "des Deutschen Gewerkschaftsbunds" OR
+      Gewerkschaftsbund OR Gewerkschaftsbundes OR Gewerkschaftsbunds OR
+
+      <<< 2.2) Untergliederungen / Marken >>>
+      "DGB Jugend" OR "DGB-Jugend" OR
+      "DGB Bildungswerk" OR "DGB Rechtsschutz" OR
+      "DGB Bundesvorstand" OR "DGB-Bundesvorstand" OR
+      "DGB Index Gute Arbeit" OR
+      "Hans-Böckler-Stiftung" OR "Hans Böckler Stiftung" OR
+      "Böckler-Stiftung" OR
+
+      <<< 2.3) DGB-Bezirke >>>
+      "DGB Bezirk Nord" OR "DGB Bezirk Niedersachsen" OR
+      "DGB Bezirk NRW" OR "DGB Bezirk Hessen-Thüringen" OR
+      "DGB Bezirk Bayern" OR "DGB Bezirk Berlin-Brandenburg" OR
+      "DGB Bezirk Sachsen" OR "DGB Bezirk Baden-Württemberg" OR
+      "DGB Region" OR
+
+      <<< 2.4) Abkürzung mit Kontext >>>
+      (
+        (DGB OR dgb) NEAR/10 (
+          Gewerkschaft OR Gewerkschaften OR Gewerkschaftstag OR
+          Dachgewerkschaft OR Dachverband OR
+          Tarif OR Tarifvertrag OR Tarifverhandlung* OR Tarifrunde OR
+          Mindestlohn OR
+          Arbeitnehmer OR Arbeitnehmerin OR
+          Arbeitskampf OR Streik OR Warnstreik OR
+          Fahimi OR Piel OR Körzell OR Hannack OR
+          "Hans Böckler" OR Böckler OR
+          "1. Mai" OR Maikundgebung OR Mairede
+        )
+      ) OR
+
+      <<< 2.5) Social-Media-Handles >>>
+      at_mentions:(dgb_news OR DGB_news OR dgb_bund OR DGB_Bundesvorstand OR
+                   dgb_jugend OR DGBJugend OR dgbjugend OR
+                   boeckler_de OR HBStiftung) OR
+      author:(dgb_news OR DGB_news OR dgb_bund OR DGB_Bundesvorstand OR
+              dgb_jugend OR DGBJugend OR dgbjugend OR
+              "DGB Bundesvorstand" OR "DGB Jugend" OR
+              boeckler_de OR HBStiftung OR "Hans-Böckler-Stiftung") OR
+
+      <<< 2.6) Hashtags >>>
+      hashtags:(DGB OR dgb OR dgbjugend OR DGBJugend OR
+                "1Mai" OR ErsterMai OR
+                Bundeskongress OR DGBkongress OR DGBBundeskongress) OR
+
+      <<< 2.7) Domain / Outbound-Links >>>
+      site:dgb.de OR links:dgb.de OR
+      site:dgb-jugend.de OR site:dgbjugend.de OR
+      site:boeckler.de OR links:boeckler.de OR
+      site:boeckler-stiftung.de OR
+
+      <<< 2.8) Spitzenpersonal mit Kontext >>>
+      (
+        ("Yasmin Fahimi" OR "Anja Piel" OR
+         "Stefan Körzell" OR "Elke Hannack" OR
+         "Reiner Hoffmann")
+        NEAR/15
+        (DGB OR Gewerkschaftsbund OR Gewerkschaft OR
+         Dachgewerkschaft OR Tarif OR Bundesvorstand)
+      )
+    )
+    AND NOT (
+      <<< DGB-spezifische False Positives: Deutscher Golf-Bund >>>
+      Golf OR Golfsport OR Golfturnier OR Golfplatz OR Golfclub OR
+      "Deutscher Golf-Bund" OR "Deutsche Golf" OR Golfbund OR
+      Birdie OR Bogey OR Eagle OR PGA OR LPGA OR
+      "Solheim Cup" OR "Ryder Cup" OR
+      "Deutsche Gesellschaft für Bauingenieurwesen"
+    )
+  )
+  OR
+  <<< ================================================================== >>>
+  <<< 3) ver.di - Vereinte Dienstleistungsgewerkschaft                   >>>
+  <<< ================================================================== >>>
+  (
+    (
+      <<< 3.1) Voller Name und Flexionsformen >>>
+      "Vereinte Dienstleistungsgewerkschaft" OR
+      "Vereinten Dienstleistungsgewerkschaft" OR
+      Dienstleistungsgewerkschaft OR
+      "ver.di" OR "Ver.di" OR "VER.DI" OR
+
+      <<< 3.2) Untergliederungen / Marken >>>
+      "ver.di Jugend" OR "verdi Jugend" OR "ver.di-Jugend" OR
+      "ver.di Bundesvorstand" OR "ver.di Bundesverwaltung" OR
+      "ver.di Frauen" OR "ver.di Senioren" OR
+      "ver.di Bildungswerk" OR "ver.di Forum" OR
+
+      <<< 3.3) Landesbezirke >>>
+      "ver.di Nord" OR "ver.di Niedersachsen" OR "ver.di NRW" OR
+      "ver.di Hessen" OR "ver.di Bayern" OR
+      "ver.di Berlin-Brandenburg" OR "ver.di Sachsen" OR
+      "ver.di Baden-Württemberg" OR "ver.di Rheinland-Pfalz" OR
+      "ver.di Saar" OR "ver.di Hamburg" OR
+
+      <<< 3.4) Single-Token "verdi" - nur mit Kontext (Giuseppe Verdi!) >>>
+      (
+        (verdi OR Verdi OR VERDI) NEAR/10 (
+          Gewerkschaft OR Dienstleistungsgewerkschaft OR
+          Tarif OR Tarifrunde OR Tarifvertrag OR Tarifverhandlung* OR
+          Werneke OR Kocsis OR Behle OR
+          Streik OR Warnstreik OR Arbeitskampf OR
+          "öffentlicher Dienst" OR "öffentlichen Dienst" OR
+          TVöD OR "TV-L" OR
+          Bundesvorstand OR Bundeskongress
+        )
+      ) OR
+
+      <<< 3.5) Social-Media-Handles >>>
+      at_mentions:(_verdi OR verdi_jugend OR verdijugend OR
+                   verdi_news OR verdi_bund OR
+                   verdi_kunst_kultur) OR
+      author:(_verdi OR verdi_jugend OR verdijugend OR
+              verdi_news OR verdi_bund OR
+              "ver.di" OR "ver.di Jugend") OR
+
+      <<< 3.6) Hashtags >>>
+      hashtags:(verdi OR verdijugend OR
+                "1Mai" OR
+                tvoed OR "tvoed2025" OR "tvl2025" OR
+                verdistreik OR verdiwarnstreik) OR
+
+      <<< 3.7) Domain / Outbound-Links >>>
+      site:verdi.de OR links:verdi.de OR
+      site:verdi-jugend.de OR site:verdijugend.de OR
+      site:verdi-bub.de OR site:verdi-bundesverwaltung.de OR
+
+      <<< 3.8) Spitzenpersonal mit Kontext >>>
+      (
+        ("Frank Werneke" OR "Andrea Kocsis" OR
+         "Christine Behle" OR "Frank Bsirske")
+        NEAR/15
+        (verdi OR "ver.di" OR Dienstleistungsgewerkschaft OR
+         Gewerkschaft OR Tarif OR Streik OR Bundesvorstand)
+      )
+    )
+    AND NOT (
+      <<< ver.di-spezifische False Positives: Giuseppe Verdi (Komponist) >>>
+      "Giuseppe Verdi" OR Komponist OR Oper OR Opernhaus OR Opera OR
+      "La Traviata" OR Rigoletto OR Aida OR Otello OR Falstaff OR
+      Nabucco OR Macbeth OR "Don Carlo" OR "Un ballo in maschera" OR
+      "Verdi-Festival" OR Festspiele OR
+      Tenor OR Sopran OR Bariton OR Mezzosopran OR
+      Operngala OR Klassikfestival
+    )
+  )
+  OR
+  <<< ================================================================== >>>
+  <<< 4) GEW - Gewerkschaft Erziehung und Wissenschaft                   >>>
+  <<< ================================================================== >>>
+  (
+    (
+      <<< 4.1) Voller Name und Flexionsformen >>>
+      "Gewerkschaft Erziehung und Wissenschaft" OR
+      "Gewerkschaft Erziehung & Wissenschaft" OR
+      "Bildungsgewerkschaft GEW" OR
+
+      <<< 4.2) Untergliederungen / Marken >>>
+      "GEW Jugend" OR "junge GEW" OR
+      "GEW Bundesausschuss" OR "GEW Bundesvorstand" OR
+      "GEW Hauptvorstand" OR "GEW Bundesfachgruppe" OR
+
+      <<< 4.3) Landesverbände >>>
+      "GEW Nord" OR "GEW Niedersachsen" OR "GEW NRW" OR
+      "GEW Hessen" OR "GEW Bayern" OR
+      "GEW Berlin" OR "GEW Brandenburg" OR
+      "GEW Sachsen" OR "GEW Sachsen-Anhalt" OR "GEW Thüringen" OR
+      "GEW Baden-Württemberg" OR "GEW Rheinland-Pfalz" OR
+      "GEW Saarland" OR "GEW Hamburg" OR "GEW Bremen" OR
+      "GEW Schleswig-Holstein" OR "GEW Mecklenburg-Vorpommern" OR
+
+      <<< 4.4) Abkürzung mit Kontext >>>
+      (
+        GEW NEAR/10 (
+          Bildungsgewerkschaft OR Lehrergewerkschaft OR
+          Lehrerin OR Lehrer OR Lehrkraft OR Lehrkräfte OR
+          Erzieher* OR Schule OR Schulen OR Hochschule OR Kita OR
+          Tarif OR Tarifvertrag OR Tarifrunde OR
+          Bildungsstreik OR Lehrerstreik OR
+          Finnern OR "Bensinger-Stolze" OR Merbitz OR
+          "TV-L" OR TVöD OR
+          Gewerkschaft OR Bundeskongress
+        )
+      ) OR
+
+      <<< 4.5) Social-Media-Handles >>>
+      at_mentions:(gew_bund OR GEWBund OR gewbund OR
+                   gew_jugend OR GEWJugend OR
+                   gew_nrw OR gew_bayern OR gew_berlin OR
+                   gew_hessen OR gew_bw) OR
+      author:(gew_bund OR GEWBund OR gewbund OR
+              gew_jugend OR GEWJugend OR
+              "GEW Bundesvorstand" OR "GEW Jugend") OR
+
+      <<< 4.6) Hashtags >>>
+      hashtags:(gew OR GEW OR gewjugend OR
+                Lehrkraeftemangel OR Bildungsstreik OR
+                Bildungsgewerkschaft) OR
+
+      <<< 4.7) Domain / Outbound-Links >>>
+      site:gew.de OR links:gew.de OR
+      site:gew-nrw.de OR site:gew-bayern.de OR site:gew-berlin.de OR
+      site:gew-hessen.de OR site:gew-bw.de OR site:gew-niedersachsen.de OR
+
+      <<< 4.8) Spitzenpersonal mit Kontext >>>
+      (
+        ("Maike Finnern" OR "Anja Bensinger-Stolze" OR
+         "Daniel Merbitz" OR "Marlis Tepe" OR
+         "Frauke Gützkow")
+        NEAR/15
+        (GEW OR Bildungsgewerkschaft OR Gewerkschaft OR
+         Lehrer* OR Erzieher* OR Schule OR Tarif)
+      )
+    )
+    AND NOT (
+      <<< GEW-spezifische False Positives: GEW Köln (Energieversorger) >>>
+      "GEW Köln" OR "GEW Wilhelmshaven" OR
+      Gemeindewerke OR "Gas- und Elektrizitätswerk" OR
+      "Energieversorger GEW" OR "GEW AG" OR "GEW Strom" OR
+      Stadtwerke OR Energieversorgung
+    )
+  )
+  OR
+  <<< ================================================================== >>>
+  <<< 5) GdP - Gewerkschaft der Polizei                                  >>>
+  <<< ================================================================== >>>
+  (
+    (
+      <<< 5.1) Voller Name und Flexionsformen >>>
+      "Gewerkschaft der Polizei" OR
+      "Gewerkschaft Polizei" OR
+      "Polizeigewerkschaft GdP" OR
+
+      <<< 5.2) Untergliederungen / Marken >>>
+      "GdP Jugend" OR "JUNGE GRUPPE GdP" OR
+      "GdP Bundesvorstand" OR "GdP Frauengruppe" OR
+      "GdP Senioren" OR
+
+      <<< 5.3) Landesbezirke >>>
+      "GdP NRW" OR "GdP Bayern" OR "GdP Hessen" OR
+      "GdP Niedersachsen" OR "GdP Berlin" OR
+      "GdP Brandenburg" OR "GdP Sachsen" OR "GdP Sachsen-Anhalt" OR
+      "GdP Thüringen" OR "GdP Baden-Württemberg" OR
+      "GdP Rheinland-Pfalz" OR "GdP Saar" OR
+      "GdP Hamburg" OR "GdP Bremen" OR
+      "GdP Schleswig-Holstein" OR "GdP Mecklenburg-Vorpommern" OR
+      "GdP Bundespolizei" OR "GdP BPol" OR
+
+      <<< 5.4) Abkürzung mit Kontext (GDP = BIP-Homonym!) >>>
+      (
+        (GdP OR gdp OR GDP) NEAR/10 (
+          Polizei OR Polizistin OR Polizist OR Polizisten OR
+          Polizeigewerkschaft OR Polizeibeamte OR Polizeibeamtin OR
+          Bundespolizei OR Landespolizei OR Kriminalpolizei OR
+          Kopelke OR Poitz OR Malchow OR Teggatz OR
+          Gewerkschaft OR Tarif OR Besoldung OR
+          "innere Sicherheit"
+        )
+      ) OR
+
+      <<< 5.5) Social-Media-Handles >>>
+      at_mentions:(gdp_bund OR GdPBund OR gdpbund OR
+                   GdPNRW OR gdp_nrw OR
+                   GdPBayern OR gdp_bayern OR
+                   junge_gruppe_gdp) OR
+      author:(gdp_bund OR GdPBund OR gdpbund OR
+              GdPNRW OR gdp_nrw OR
+              "GdP Bundesvorstand" OR "Gewerkschaft der Polizei") OR
+
+      <<< 5.6) Hashtags >>>
+      hashtags:(GdP OR gdp OR gdpbund OR
+                Polizeigewerkschaft OR
+                gdpbundeskongress) OR
+
+      <<< 5.7) Domain / Outbound-Links >>>
+      site:gdp.de OR links:gdp.de OR
+      site:gdp-deutschland.de OR
+      site:gdp-bundespolizei.de OR
+
+      <<< 5.8) Spitzenpersonal mit Kontext >>>
+      (
+        ("Jochen Kopelke" OR "Alexander Poitz" OR
+         "Oliver Malchow" OR "Heiko Teggatz")
+        NEAR/15
+        (GdP OR Polizeigewerkschaft OR Polizei OR
+         Bundespolizei OR Gewerkschaft OR Tarif)
+      )
+    )
+    AND NOT (
+      <<< GdP-spezifische False Positives: GDP = Bruttoinlandsprodukt >>>
+      "Gross Domestic Product" OR "Bruttoinlandsprodukt" OR BIP OR
+      "GDP growth" OR "GDP per capita" OR "GDP-Wachstum" OR
+      "Wirtschaftswachstum" OR "Wirtschaftsleistung" OR
+      "OECD GDP" OR "EU GDP" OR Konjunkturprognose
+    )
+  )
+  OR
+  <<< ================================================================== >>>
+  <<< 6) IG Metall                                                       >>>
+  <<< ================================================================== >>>
+  (
+    (
+      <<< 6.1) Voller Name und Flexionsformen >>>
+      "IG Metall" OR "IG-Metall" OR "IGMetall" OR
+      "Industriegewerkschaft Metall" OR
+
+      <<< 6.2) Untergliederungen / Marken >>>
+      "IG Metall Jugend" OR "IG-Metall-Jugend" OR
+      "IG Metall Vorstand" OR "IG Metall Bundesvorstand" OR
+      "IG Metall Bildungszentrum" OR "IG Metall Senioren" OR
+      "IG Metall Frauen" OR
+
+      <<< 6.3) Bezirke >>>
+      "IG Metall Bezirk" OR
+      "IG Metall Küste" OR "IG Metall Niedersachsen" OR
+      "IG Metall Nordrhein-Westfalen" OR "IG Metall Mitte" OR
+      "IG Metall Bayern" OR "IG Metall Berlin-Brandenburg-Sachsen" OR
+      "IG Metall Baden-Württemberg" OR
+
+      <<< 6.4) Abkürzung mit Kontext >>>
+      (
+        IGM NEAR/10 (
+          Metall OR Metaller OR Metallerin OR
+          Industriegewerkschaft OR Gewerkschaft OR
+          Tarif OR Tarifvertrag OR Tarifrunde OR Tarifverhandlung* OR
+          Benner OR Kerner OR Hofmann OR Urban OR
+          Streik OR Warnstreik OR Arbeitskampf OR
+          Metallindustrie OR Elektroindustrie OR
+          "35-Stunden-Woche" OR "Vier-Tage-Woche"
+        )
+      ) OR
+
+      <<< 6.5) Social-Media-Handles >>>
+      at_mentions:(IGMetall OR igmetall OR ig_metall OR
+                   igmjugend OR igmetalljugend OR
+                   IGMetall_NRW OR IGMetallBayern) OR
+      author:(IGMetall OR igmetall OR ig_metall OR
+              igmjugend OR igmetalljugend OR
+              "IG Metall" OR "IG Metall Jugend") OR
+
+      <<< 6.6) Hashtags >>>
+      hashtags:(IGMetall OR igmetall OR igmjugend OR
+                Tarifrunde2025 OR Metalltarifrunde OR
+                FairWandel OR Wirtschaftswende) OR
+
+      <<< 6.7) Domain / Outbound-Links >>>
+      site:igmetall.de OR links:igmetall.de OR
+      site:igmetall-zoom.de OR site:wap.igmetall.de OR
+      site:igmetall-jugend.de OR
+
+      <<< 6.8) Spitzenpersonal mit Kontext >>>
+      (
+        ("Christiane Benner" OR "Jürgen Kerner" OR
+         "Hans-Jürgen Urban" OR "Jörg Hofmann" OR
+         "Nadine Boguslawski")
+        NEAR/15
+        ("IG Metall" OR IGMetall OR IGM OR
+         Industriegewerkschaft OR Gewerkschaft OR Tarif)
+      )
+    )
+    AND NOT (
+      <<< IG Metall-spezifische False Positives >>>
+      "Internationale Gesellschaft Metall" OR
+      "IG Farben" OR
+      "Inert Gas Metal" OR "Inspector General"
+    )
+  )
+  OR
+  <<< ================================================================== >>>
+  <<< 7) Marburger Bund                                                  >>>
+  <<< ================================================================== >>>
+  (
+    (
+      <<< 7.1) Voller Name und Flexionsformen >>>
+      "Marburger Bund" OR "Marburger Bundes" OR
+      "des Marburger Bundes" OR
+      "Verband der angestellten und beamteten Ärztinnen und Ärzte" OR
+
+      <<< 7.2) Untergliederungen / Marken >>>
+      "Marburger Bund Bundesverband" OR
+      "Marburger Bund Jugend" OR "MB Jugend" OR
+      "Marburger Bund Hauptversammlung" OR
+
+      <<< 7.3) Landesverbände >>>
+      "Marburger Bund NRW" OR "Marburger Bund Bayern" OR
+      "Marburger Bund Hessen" OR "Marburger Bund Niedersachsen" OR
+      "Marburger Bund Berlin" OR "Marburger Bund Sachsen" OR
+      "Marburger Bund Baden-Württemberg" OR
+      "Marburger Bund Rheinland-Pfalz" OR
+      "Marburger Bund Hamburg" OR
+
+      <<< 7.4) Abkürzung mit Kontext (MB extrem mehrdeutig!) >>>
+      (
+        "MB" NEAR/5 (
+          Ärztegewerkschaft OR Ärztetarifvertrag OR
+          Klinikärzte OR Klinikarzt OR Klinikärztin OR
+          "angestellte Ärzte" OR Marburger
+        )
+      ) OR
+
+      <<< 7.5) Social-Media-Handles >>>
+      at_mentions:(MarburgerBund OR marburgerbund OR
+                   MB_Jugend OR mbjugend OR
+                   marburgerbund_de) OR
+      author:(MarburgerBund OR marburgerbund OR
+              MB_Jugend OR mbjugend OR
+              "Marburger Bund") OR
+
+      <<< 7.6) Hashtags >>>
+      hashtags:(marburgerbund OR MarburgerBund OR
+                mbjugend OR
+                aerztetarif OR aerztestreik OR Klinikstreik) OR
+
+      <<< 7.7) Domain / Outbound-Links >>>
+      site:marburger-bund.de OR links:marburger-bund.de OR
+      site:marburgerbund.de OR site:mb-jugend.de OR
+
+      <<< 7.8) Spitzenpersonal mit Kontext >>>
+      (
+        ("Susanne Johna" OR "Andreas Botzlar" OR
+         "Lars Lindemann" OR "Rudolf Henke" OR
+         "Christian Twardy")
+        NEAR/15
+        ("Marburger Bund" OR Ärztegewerkschaft OR
+         Klinikärzte OR Klinikarzt OR Klinikärztin OR
+         Gewerkschaft OR Tarif)
+      )
+    )
+    AND NOT (
+      <<< Marburger Bund-spezifische False Positives >>>
+      "Marburger Virus" OR Marburgvirus OR
+      "Universität Marburg" OR "Philipps-Universität" OR
+      "Marburger Medien"
+    )
+  )
+  OR
+  <<< ================================================================== >>>
+  <<< 8) Politik & Ministerien                                           >>>
+  <<<    Bundesregierung (Merz-Kabinett 2025) + Länder-MPs + Experten    >>>
+  <<<    Reiner Author-Filter - der Themen-Filter unten greift.          >>>
+  <<< ================================================================== >>>
+  (
+    author:(
+      <<< 8.1) Bundesminister:innen + BK & Vize >>>
+      _FriedrichMerz OR MerzCDU OR
+      klingbeil.lars OR larsklingbeil OR
+      AlexanderDobrindt OR
+      johann.wadephul OR jowadephul OR
+      boris.pistorius OR borispistorius OR
+      DoroBaer OR DorotheeBaerMdB OR dorobaer OR
+      baerbel.bas OR baerbelbas OR
+      PSchnieder OR PatrickSchniederMdB OR pschnieder OR
+      schneidercar OR schneidercar_spd OR
+      nina.warken OR ninawarken OR warkennina OR
+      AloisRainer OR alois.rainer.mdb OR
+      ReemAlabali OR reem.alabaliradovan OR
+      verenahubertz OR verenahubertz.spd OR
+      ThorstenFreiCDU OR thorsten.frei OR thorsten_frei OR
+
+      <<< 8.2) Ministerpräsident:innen / Bürgermeister:innen >>>
+      Markus_Soeder OR "markus.soeder" OR "markus.soder.75" OR
+      kaiwegner OR "kai.wegner2.0" OR "kaiwegner.cdu" OR
+      dietmarwoidke OR dwoidke OR
+      AndreasBovensc1 OR andreasbovenschulte OR bwiebovenschulte OR
+      TschenPe OR buergermeister.hamburg OR
+      BorisRhein OR Boris_Rhein OR
+      ManuelaSchwesig OR manuelaschwesig OR
+      OlafLies OR MinisterOlafLies OR olaf.lies OR
+      HendrikWuest OR hendrik.wuest OR
+      alex_schweitzer OR alexander.schweitzer OR
+      AnkeRehlinger OR ankerehlinger OR
+      MPKretschmer OR michaelkretschmer OR "MP.Michael.Kretschmer" OR
+                       "mp.danielguenther" OR
+      SvenSchulzeMWL OR schulzeeuropa OR sven.schulze.europa OR
+      DGuenther_CDUSH OR daniel.guenther2 OR
+      DrMarioVoigt OR mario_voigt OR mariovoigt OR
+      cem_oezdemir OR cem.oezdemir OR
+      karin.prien OR karinpriende OR
+
+      <<< 8.3) Bundestags-Mitglieder / Berichterstattung >>>
+      AnniKlose OR annikloseberlin OR "AnnikaKlose.BerlinMitte" OR
+      pascal_reddig OR
+      "dr.florian.dorn" OR
+
+      <<< 8.4) Ministerien (Bundesbehörden) >>>
+      BMF_Bund OR finanzministerium OR bundesfinanzministerium OR
+      BMI_Bund OR innenministerium OR
+      AuswaertigesAmt OR auswaertigesamt OR
+      BMVg_Bundeswehr OR Bundeswehr OR verteidigungsministerium OR
+      BMWK OR bmwk OR bmwk_bund OR
+      bmftr_bund OR
+      bmj_bund OR bundesjustizministerium OR
+      BMFSFJ OR bmfsfj OR
+      BMAS_Bund OR bmas_bund OR "BMAS.Bund" OR
+      bmds_bund OR
+      bmdv OR
+      BMUV OR umweltministerium OR "BMUV.bund" OR
+      BMG_Bund OR bundesgesundheitsministerium OR "bmg.bund" OR
+      bmel OR lebensministerium OR
+      BMZ_Bund OR bmz_bund OR "BMZ.Bund" OR
+      bmwsb_bund OR bundesbauministerium OR
+      BK_Amt
+    )
+  )
+
+)
+AND
+(
+  <<< ================================================================== >>>
+  <<< Themen-Filter: Rente / Pension / Versorgung - IM BEAMTEN-KONTEXT   >>>
+  <<<   BLOCK A - direkt-exakte Begriffe (matchen ohne Anker)            >>>
+  <<<   BLOCK B - Themen-Begriffe NUR mit Beamt* NEAR/10                 >>>
+  <<< ================================================================== >>>
+  (
+    <<< ============================================================== >>>
+    <<< BLOCK A: Direkte Treffer - exakt, ohne Wildcard, ohne Anker     >>>
+    <<< "genau so" gefordert: keine Flexion, keine ASCII-Varianten.    >>>
+    <<< ============================================================== >>>
+    (
+      Abgeordnetenversorgung OR
+      "Art. 33 Abs. 5 GG" OR
+      "Attraktivität öffentlicher Dienst" OR
+      Beamtenbesoldung OR
+      Beamtenpension OR
+      Beamtenprivileg OR
+      Beamtenversorgung OR
+      Beamtenversorgungsgesetz OR
+      BeamtVG OR
+      Einheitsrente OR
+      Einheitsversicherung OR
+      Entbeamtung OR
+      "Fachkräftemangel öffentlicher Dienst" OR
+      Politikerrente OR
+      Politikerpension OR
+      "Zwei-Klassen-Rente" OR
+      "Zwei-Klassen-System Alterssicherung"
+    )
+    OR
+    <<< ============================================================== >>>
+    <<< BLOCK B: Themen-Begriffe NUR im Beamten-Kontext                 >>>
+    <<< Beamt* NEAR/10 ( alle Themen-Begriffe OR-verknüpft )           >>>
+    <<< ============================================================== >>>
+    (
+      Beamt* NEAR/10 (
+        "Abschlussbericht Rentenkommission" OR
+        Besoldungserhöhung OR
+        "Abschlagsfreie Rente" OR
+        Aktienrente OR
+        Alimentation OR
+        Alimentationsprinzip OR
+        Alterssicherungskommission OR
+        Altersteilzeit OR
+        "Amtsangemessene Alimentation" OR
+        Anwärterbezüge OR
+        Beihilfeberechtigung OR
+        Beitragsbemessungsgrenze OR
+        "Beitragssatz Rente" OR
+        Besoldungsanpassung OR
+        "Betriebliche Altersvorsorge" OR
+        Betriebsrente OR
+        "Bundeszuschuss Rente" OR
+        Bürgerversicherung OR
+        "Drei-Säulen-Modell" OR
+        Eckrente OR
+        Nachwuchsgewinnung OR
+        Erwerbstätigenversicherung OR
+        "Frühstart-Rente" OR
+        Frühverrentung OR
+        "Gesetzliche Rentenversicherung" OR
+        GRV OR
+        Grundrente OR
+        Pensionierungsalter OR
+        Pensionsfonds OR
+        Pensionslasten OR
+        Pensionsprivileg OR
+        Pensionsrückstellungen OR
+        Pflegeversicherung OR
+        Pflichtversicherung OR
+        "Private Altersvorsorge" OR
+        "Private Krankenversicherung Beamte" OR
+        Rentenanpassung OR
+        Renteneintrittsalter OR
+        Rentenformel OR
+        Rentengerechtigkeit OR
+        Rentenkommission OR
+        Rentenniveau OR
+        Rentenpaket OR
+        Rentenreform OR
+        Rentenversicherungspflicht OR
+        Rentenwert OR
+        "Riester-Rente" OR
+        Ruhegehalt OR
+        "Solidarisches Rentensystem" OR
+        "Sonderkasse Beamte" OR
+        Standardrente OR
+        Streikverbot OR
+        Umlageverfahren OR
+        Versorgungsabschlag OR
+        Versorgungsanwartschaft OR
+        Versorgungsausgleich OR
+        Versorgungsbezüge OR
+        Versorgungsempfänger OR
+        Versorgungslasten OR
+        Versorgungsrücklage
+      )
+    )
+  )
+)
+AND language:de
