@@ -1,0 +1,10 @@
+BDEW Category-Split  —  966 Accounts in 7 Sub-Categories
+Limit 4000 Z. | Text-Reserve 1000 Z. | author:(...) <= 2990 Z.
+
+category_01.txt: 176 Accounts | author:() 2986 Z. | jetzt gesamt 3041 Z. | mit 1000 Z. Text max 3991 Z.
+category_02.txt: 163 Accounts | author:() 2983 Z. | jetzt gesamt 3038 Z. | mit 1000 Z. Text max 3988 Z.
+category_03.txt: 172 Accounts | author:() 2990 Z. | jetzt gesamt 3045 Z. | mit 1000 Z. Text max 3995 Z.
+category_04.txt: 137 Accounts | author:() 2976 Z. | jetzt gesamt 3031 Z. | mit 1000 Z. Text max 3981 Z.
+category_05.txt: 135 Accounts | author:() 2982 Z. | jetzt gesamt 3037 Z. | mit 1000 Z. Text max 3987 Z.
+category_06.txt: 159 Accounts | author:() 2974 Z. | jetzt gesamt 3029 Z. | mit 1000 Z. Text max 3979 Z.
+category_07.txt:  24 Accounts | author:()  487 Z. | jetzt gesamt  542 Z. | mit 1000 Z. Text max 1492 Z.
